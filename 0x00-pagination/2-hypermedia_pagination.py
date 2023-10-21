@@ -41,7 +41,7 @@ class Server:
             return []
         else:
             return self.__dataset[i[0]:i[1]]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """takes the same arguments (and defaults) as get_page
            returns a dictionary
@@ -55,7 +55,7 @@ class Server:
             "page_size": page_size if page < total_pages else 0,
             "data": data,
             "next_page": page + 1 if page + 1 < total_pages else None,
-            "pre_page": page - 1 if page -1 > 0 else None,
+            "pre_page": page - 1 if page - 1 > 0 else None,
             "total_pages": total_pages
         }
         return p
