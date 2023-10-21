@@ -65,4 +65,3 @@ class Server:
                          'page_size': page_size,
                          'data': truncated_data}
         return response_data
-        
