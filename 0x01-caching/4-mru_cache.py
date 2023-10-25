@@ -26,7 +26,7 @@ class MRUCache(BaseCaching):
         if not key or not item:
             return
 
-        self.mru_order [key] = item
+        self.mru_order[key] = item
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
