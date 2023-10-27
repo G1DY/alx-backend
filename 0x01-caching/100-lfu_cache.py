@@ -34,7 +34,6 @@ class LFUCache(BaseCaching):
             print(f'DISCARD: {key_to_remove}')
         self.cache_data.update(new_cache_data)
         counter.update({key: counter.get(key, 0) + 1})
-
         counter = dict(sorted(counter.items(),
                        key=lambda x: (x[1], x[0])))
 
