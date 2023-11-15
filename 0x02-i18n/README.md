@@ -148,7 +148,8 @@ In your HTML template, if a user is logged in, in a paragraph tag, display a wel
    > > Test by logging in as different users
 
 7. Infer appropriate time zone
-   Define a get_timezone function and use the babel.timezoneselector decorator.
+
+Define a get_timezone function and use the babel.timezoneselector decorator.
 
 The logic should be the same as get_locale:
 
