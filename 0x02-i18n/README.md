@@ -160,3 +160,14 @@ The logic should be the same as get_locale:
 > > 3.  Default to UTC
 
 Before returning a URL-provided or user time zone, you must validate that it is a valid time zone. To that, use pytz.timezone and catch the pytz.exceptions.UnknownTimeZoneError exception.
+
+8. Display the current time
+
+Based on the inferred time zone, display the current time on the home page in the default format. For example:
+
+Jan 21, 2020, 5:55:39 AM or 21 janv. 2020 à 05:56:28
+
+Use the following translations
+| msgid | English | French |
+| ----------- | ---------------------- | -------------------------- |
+| current_time_is | "The current time is %(current_time)s." | "Nous sommes le %(current_time)s." |
