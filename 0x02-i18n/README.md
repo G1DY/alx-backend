@@ -67,7 +67,7 @@ Localization (l10n) is the process of adapting the internationalized software fo
 ### Project Tasks
 
 0. Basic Flask app
-   First you will setup a basic Flask app in `0-app.py`. Create a single `/` route and an `index.html` template that simply outputs “Welcome to Holberton” as page title (<title>) and “Hello world” as header (<h1>).
+   First you will setup a basic Flask app in `0-app.py`. Create a single `/` route and an `index.html` template that simply outputs “Welcome to Holberton” as page title (<title>) and “Hello world” as header.
 
 1. Basic Babel setup
    Then instantiate the `Babel` object in your app. Store it in a module-level variable named `babel`.
