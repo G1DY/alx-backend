@@ -17,19 +17,19 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object("3-app.Config")
+app.config.from_object('3-app.Config')
 
 
 @babel.localeselector
 def get_locale():
     """determines the best match with our supported languages"""
-    return request.accept_languages.best_match(LANGUAGES)
+    return request.accept_languages.best_match(app.Config['LANGUAGES'])
 
 
-@app.route("/", methods=["GET"], strict_slashes=False)
+@app.route('/', methods=['GET'], strict_slashes=False)
 def welcome_to_holberton():
     """renders templates"""
-    return render_template("3-index.html")
+    return render_template('3-index.html')
 
 
 if __name__ == "__main__":
