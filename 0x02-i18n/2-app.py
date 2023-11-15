@@ -20,7 +20,7 @@ app.url_map.strict_slashes = False
 @app.route("/", methods=["GET"], strict_slashes=False)
 def hello_world():
     """renders templates"""
-    return render_template("1-index.html")
+    return render_template("2-index.html")
 
 
 @babel.localeselector
