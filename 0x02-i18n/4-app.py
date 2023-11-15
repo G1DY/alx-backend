@@ -12,6 +12,7 @@ class Config():
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
+    BABEL_TRANSLATION_DIRECTORIES = 'translations'
 
 
 app.config.from_object(Config)
@@ -24,16 +25,16 @@ def get_locale():
     if locale and locale in app.config['LANGUAGES']:
         return locale
     print(request.accept_languages)
-    return request.accept_languages.best_match(app.Config['LANGUAGES'])
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-babel.init_app(app)
+babel.init_app(app, locale_selector=get_locale)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def hello_world():
     """renders templates"""
-    return render_template("3-index.html")
+    return render_template("4-index.html")
 
 
 if __name__ == "__main__":
