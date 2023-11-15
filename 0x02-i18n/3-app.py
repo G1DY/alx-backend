@@ -3,6 +3,9 @@
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
+app = Flask(__name__)
+babel = Babel(app)
+
 
 class Config():
     """has languanges english and french"""
@@ -11,22 +14,22 @@ class Config():
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app = Flask(__name__)
-babel = Babel(app)
 app.config.from_object(Config)
-app.url_map.strict_slashes = False
+
+
+# @babel.localeselector
+def get_locale():
+    """determine the best match with our supported languages."""
+    print(request.accept_languages)
+    return request.accept_languages.best_match(app.Config['LANGUAGES'])
+
+babel.init_app(app)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def hello_world():
     """renders templates"""
     return render_template("3-index.html")
-
-
-@babel.localeselector
-def get_locale():
-    """determine the best match with our supported languages."""
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 if __name__ == "__main__":
