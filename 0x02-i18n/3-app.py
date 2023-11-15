@@ -23,6 +23,7 @@ def get_locale():
     print(request.accept_languages)
     return request.accept_languages.best_match(app.Config['LANGUAGES'])
 
+
 babel.init_app(app)
 
 
