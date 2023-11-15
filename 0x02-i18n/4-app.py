@@ -12,7 +12,7 @@ class Config():
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
-    BABEL_TRANSLATION_DIRECTORIES = 'translations'
+    # BABEL_TRANSLATION_DIRECTORIES = 'translations'
 
 
 app.config.from_object(Config)
