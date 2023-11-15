@@ -45,6 +45,6 @@ class LFUCache(BaseCaching):
         counter = self.counter
         if cache_item:
             counter.update({key: counter.get(key) + 1})
-        counter = dict(sorted(counter.items(),
-                       key=lambda x: (x[1], x[0])))
+            counter = dict(sorted(counter.items(),
+                           key=lambda x: (x[1], x[0])))
         return cache_item
