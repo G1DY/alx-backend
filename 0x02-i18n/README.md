@@ -136,8 +136,13 @@ In your HTML template, if a user is logged in, in a paragraph tag, display a wel
 6. Use user locale
    Change your get_locale function to use a user’s preferred local if it is supported.
    The order of priority should be
+
    > > Locale from URL parameters
+
    > > Locale from user settings
+
    > > Locale from request header
+
    > > Default locale
+
    > > Test by logging in as different users
