@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Flask app that implements babel library"""
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel, lazy_gettext as _l
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -17,6 +17,7 @@ class Config:
 
 
 app.config.from_object(Config)
+babel.init_app(app)
 
 
 @babel.localeselector
