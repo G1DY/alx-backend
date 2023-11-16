@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Flask app that implements babel library"""
 from flask import Flask, render_template, request
-from flask_babel import Babel, lazy_gettext as _l
+from flask_babel import Babel
 
 app = Flask(__name__)
 babel = Babel(app)
 
 
-class Config:
+class Config(object):
     """has languanges english and french"""
 
     LANGUAGES = ["en", "fr"]
@@ -25,7 +25,11 @@ def get_locale():
     locale = request.args.get("locale")
     if locale and locale in app.config["LANGUAGES"]:
         return locale
+    print(request.accept_languages)
     return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+
+babel.init_app(app, locale_selector=get_locale)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
