@@ -34,7 +34,7 @@ babel.init_app(app)
 @app.route("/", methods=["GET"], strict_slashes=False)
 def hello_world():
     """renders templates"""
-    return render_template("4-index.html")
+    return "Hello World!"
 
 
 if __name__ == "__main__":
