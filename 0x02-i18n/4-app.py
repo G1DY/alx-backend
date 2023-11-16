@@ -16,7 +16,7 @@ class Config:
     BABEL_TRANSLATION_DIRECTORIES = "translations"
 
 
-app.config["BABEL_DEFAULT_LOCALE"] = "en"
+app.config.from_object(Config)
 
 
 @babel.localeselector
