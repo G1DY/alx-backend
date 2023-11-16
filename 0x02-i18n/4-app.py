@@ -22,22 +22,23 @@ app.config.from_object(Config)
 @babel.localeselector
 def get_locale():
     """determine the best match with our supported languages."""
-    locale = request.args.get("locale")
-    if locale and locale in app.config["LANGUAGES"]:
-        return locale
-    print(request.accept_languages)
+    queries = request.query_string.decode("utf-8").split("&")
+    query_table = dict(
+        map(
+            lambda x: (x if "=" in x else "{}=".format(x)).split("="),
+            queries,
+        )
+    )
+    if "locale" in query_table:
+        if query_table["locale"] in app.config["LANGUAGES"]:
+            return query_table["locale"]
     return request.accept_languages.best_match(app.config["LANGUAGES"])
-
-
-babel.init_app(app)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def hello_world():
     """renders templates"""
-    return render_template(
-        "3-index.html", title=_("home_title"), header=_("home_header")
-    )
+    return render_template("4-index.html")
 
 
 if __name__ == "__main__":
