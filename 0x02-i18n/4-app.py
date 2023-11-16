@@ -28,13 +28,14 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-# babel.init_app(app, locale_selector=get_locale)
+babel.init_app(app, locale_selector=get_locale)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def hello_world():
     """renders templates"""
-    return render_template('4-index.html')
+    locale = get_locale()
+    return render_template('4-index.html', locale=locale)
 
 
 if __name__ == "__main__":
